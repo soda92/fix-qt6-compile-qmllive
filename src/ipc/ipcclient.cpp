@@ -88,8 +88,8 @@ IpcClient::IpcClient(QObject *parent)
     connect(m_socket, &QAbstractSocket::connected, this, &IpcClient::connected);
     connect(m_socket, &QAbstractSocket::connected, this, &IpcClient::processQueue);
     connect(m_socket, &QAbstractSocket::disconnected, this, &IpcClient::disconnected);
-    void (QAbstractSocket::*QAbstractSocket__error)(QAbstractSocket::SocketError) = &QAbstractSocket::error;
-    connect(m_socket, QAbstractSocket__error, this, &IpcClient::onError);
+    auto QAbstractSocket__error = &QAbstractSocket::error;
+    connect(m_socket, &QAbstractSocket::errorOccurred, this, &IpcClient::onError);
     connect(m_socket, &QAbstractSocket::bytesWritten, this, &IpcClient::onBytesWritten);
 
     connect(m_connection, &IpcConnection::received, this, &IpcClient::received);
@@ -104,7 +104,7 @@ IpcClient::IpcClient(QTcpSocket *socket, QObject *parent)
 {
     connect(m_socket, &QAbstractSocket::connected, this, &IpcClient::connected);
     connect(m_socket, &QAbstractSocket::disconnected, this, &IpcClient::disconnected);
-    void (QAbstractSocket::*QAbstractSocket__error)(QAbstractSocket::SocketError) = &QAbstractSocket::error;
+    auto QAbstractSocket__error = &QAbstractSocket::errorOccurred;
     connect(m_socket, QAbstractSocket__error, this, &IpcClient::onError);
     connect(m_socket, &QAbstractSocket::bytesWritten, this, &IpcClient::onBytesWritten);
 }

@@ -31,6 +31,7 @@
 ****************************************************************************/
 
 #include "filesystemmodel.h"
+#include <QtCore>
 
 FileSystemModel::FileSystemModel(QObject *parent) :
     QFileSystemModel(parent) ,
@@ -73,7 +74,7 @@ Qt::ItemFlags FileSystemModel::flags(const QModelIndex &index) const
     QString path = filePath(index);
 
     foreach (QString type, m_allowedTypes) {
-        if (path.contains(QRegExp(type, Qt::CaseInsensitive, QRegExp::Wildcard)))
+        if (path.contains(type))
             return f;
     }
 

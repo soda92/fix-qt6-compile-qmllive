@@ -61,7 +61,7 @@ private Q_SLOTS:
 
 private:
     WindowWidget* m_ww;
-    QPointer<PreviewImageProvider> m_imageProvider;
+    PreviewImageProvider* m_imageProvider;
     WorkspaceView* m_workspaceView;
     bool m_clipToRootObject;
 };

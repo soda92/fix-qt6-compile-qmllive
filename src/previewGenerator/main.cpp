@@ -47,6 +47,7 @@
 #include <QTextStream>
 
 #include "../qmllive_version.h"
+#include <iostream>
 
 void handlePreview(QLocalSocket *socket);
 
@@ -130,7 +131,7 @@ int main (int argc, char** argv)
                qPrintable(preview.errorString()));
     }
 
-    QTextStream(stdout) << QLatin1String("ready#") << preview.serverName().toUtf8().toHex() << endl;
+    QTextStream(stdout) << QLatin1String("ready#") << preview.serverName().toUtf8().toHex() << "\n";
 
     return app.exec();
 }

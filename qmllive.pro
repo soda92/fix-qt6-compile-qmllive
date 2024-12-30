@@ -19,7 +19,7 @@ SUBDIRS += src
 !skip-examples: SUBDIRS += examples
 SUBDIRS += doc
 
-include(doc/doc.pri)
+#include(doc/doc.pri)
 
 OTHER_FILES += \
     README.md \

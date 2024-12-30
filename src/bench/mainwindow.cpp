@@ -179,7 +179,7 @@ void MainWindow::setupWorkspaceView()
     m_workspaceDock = new QDockWidget("Workspace", this);
     m_workspaceDock->setObjectName("workspace");
     m_workspaceDock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
-    m_workspaceDock->setFeatures(QDockWidget::AllDockWidgetFeatures);
+    m_workspaceDock->setFeatures(QDockWidget::DockWidgetClosable|QDockWidget::DockWidgetMovable|QDockWidget::DockWidgetFloatable);
 
     auto contents = new QWidget;
     auto layout = new QVBoxLayout(contents);
@@ -221,7 +221,7 @@ void MainWindow::setupHostView()
 {
     m_hostDock = new QDockWidget("Hosts", this);
     m_hostDock->setObjectName("hosts");
-    m_hostDock->setFeatures(QDockWidget::AllDockWidgetFeatures);
+    m_hostDock->setFeatures(QDockWidget::DockWidgetClosable|QDockWidget::DockWidgetMovable|QDockWidget::DockWidgetFloatable);
 
     QFrame *hostContainer = new QFrame();
     hostContainer->setFrameStyle(QFrame::StyledPanel);
@@ -244,7 +244,7 @@ void MainWindow::setupLogView()
     m_logDock->setObjectName("log");
     m_logDock->setWidget(m_log);
     m_logDock->setAllowedAreas(Qt::TopDockWidgetArea | Qt::BottomDockWidgetArea);
-    m_logDock->setFeatures(QDockWidget::AllDockWidgetFeatures);
+    m_logDock->setFeatures(QDockWidget::DockWidgetClosable|QDockWidget::DockWidgetMovable|QDockWidget::DockWidgetFloatable);
     addDockWidget(Qt::BottomDockWidgetArea, m_logDock);
 
     connect(m_node, &LiveNodeEngine::clearLog, m_log, &LogView::clear);

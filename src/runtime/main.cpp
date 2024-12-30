@@ -144,7 +144,7 @@ private slots:
             QSurfaceFormat surfaceFormat;
             surfaceFormat.setAlphaBufferSize(8);
             activeWindow->setFormat(surfaceFormat);
-            activeWindow->setClearBeforeRendering(true);
+            //activeWindow->setClearBeforeRendering(true);
             activeWindow->setColor(QColor(Qt::transparent));
         }
 
